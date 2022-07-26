@@ -1,0 +1,45 @@
+Resources
+  https://www.typescriptlang.org/docs/
+  https://basarat.gitbook.io/typescript/type-system
+    i will learn primarly from this resource
+  https://www.codecademy.com/learn/learn-typescript
+    maybe that as well
+      TS is a superset of JS with types
+      Functions
+        optional parameters
+          function greet(name?: string) { console.log(name || 'Anon') }
+        default parameters
+          function greet(name = 'Anon') { console.log(name) }
+          name will infer type of default parameter, in this case it will be `string`
+        inferring return types
+          by type of return statement
+          by type of input parameters
+          by type of passing values to the function
+        explicit return types
+          function test(args): string {}
+          const test(args): string => {}
+        void return type
+          function log(args): void {}
+        documenting functions
+          like this
+            /**
+            * Returns the ...
+            * @param x - the first input
+            * @returns What this funciton returns
+            */
+            function ...
+      Complex Types
+        Arrays
+          let names: string[]
+          let names: Array<string>
+        Multi-dimensional Arrays
+          let names: string[][]
+        Tuples - Arrays with fixed sequence of types
+          let ourTuple: [string, number, string, boolean]
+          they act like arrays
+          but tuples aren't compatible with `array` type
+          tuples are fixed length
+        Inference
+          Inference returns arrays,  for tuples we need to use explicit type annotations
+
+        Rest Parameters
