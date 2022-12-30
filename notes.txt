@@ -30,16 +30,98 @@ Resources
             function ...
       Complex Types
         Arrays
-          let names: string[]
-          let names: Array<string>
-        Multi-dimensional Arrays
-          let names: string[][]
-        Tuples - Arrays with fixed sequence of types
-          let ourTuple: [string, number, string, boolean]
-          they act like arrays
-          but tuples aren't compatible with `array` type
-          tuples are fixed length
-        Inference
-          Inference returns arrays,  for tuples we need to use explicit type annotations
-
-        Rest Parameters
+            let names: string[]
+            let names: Array<string>
+          Multi-dimensional Arrays
+            let names: string[][]
+          Tuples - Arrays with fixed sequence of types
+            let ourTuple: [string, number, string, boolean]
+            array of tuples: danceMoves:[string, number, boolean][]
+            they act like arrays
+            but tuples aren't compatible with `array` type
+            tuples are fixed length
+          Inference
+            Inference returns arrays, for tuples we need to use explicit type annotations
+          Rest Parameters
+            function doSomething(...restParameters: string[]) {...}
+          Spread Syntax
+            doSomething(...moves);
+          Dimensional monster:
+            let monster: [string[],string[],string[][],string[][],string[][][][],string[][][][],number[][][][][][],number[],string[],boolean[],number[],string[],boolean[],number[][]] = [
+                 [],            []      ,
+                 [[]],        [[]]     ,
+              [[[['X']]]],[[[['X']]]]   ,
+                [[[[[[1111111]]]]]]     ,
+                 [],[],[],[],[],[]      ,
+                       [[3]]
+            ];
+      Custom types
+        Enum
+          enum Direction {
+            North,
+            South,
+            East,
+            West
+          }
+          let north: Direction = Direction.North;
+          Enum values are assigned a numerical value according to their listed order. 
+            north === 0 (true)
+        String Enums vs. Numeric Enums
+          enum DirectionString { North = 'NORTH', South = 'SOUTH', East = 'EAST', West = 'WEST' }
+          string enums requires write string explicitly
+          string enums are much more strict than numeric
+            with string enums, variables cannot be assigned to strings at all!
+              let whichWayToAntarctica: DirectionString;
+              whichWayToAntarctica = '\ (•◡•) / Arbitrary String \ (•◡•) /'; // Type error!
+              whichWayToAntarctica = 'SOUTH'; // STILL a type error!
+              whichWayToAntarctica = DirectionString.South; // The only
+        Object Types
+          let aPerson: {name: string, age: number};
+        Type Aliases
+          type <alias name> = <type>
+            type MyString = string;
+            let myVar: MyString = 'Hi'; // Valid code.
+          TypeScript aliases are nothing more than names. They have absolutely no influence over how types work.
+            type MyString = string; 
+            type MyOtherString = string;
+            let firstString: MyString = 'test';
+            let secondString: MyOtherString = firstString; // Valid code.
+        Function Types
+          specifies the argument types and return type of a function
+          usefull with callbacks
+            type OperatorFunction = (arg0: number, arg1: number) => number;
+            function mathTutor(operationCallback: OperatorFunction) {...}
+        Generic Types
+          generics are ways to create collections of types, collections are parameterized by one or more type variables
+          init:
+            type Family<T> = {
+              parents: [T, T], mate: T, children: T[]
+            };
+          usage:
+            let theFamily: Family<number> = {
+              parents: [3, 4], mate: 9, children: [5, 30, 121]
+            };
+        Generic Functions
+          init:
+            function getFilledArray<T>(value: T, n: number): T[] {
+              return Array(n).fill(value);
+            }
+          usage:
+            stringArray = getFilledArray<string>('hi', 6);
+      Union types
+          union is a combination of multiple types
+        Defining Unions
+          let ID: string | number
+        Type Narrowing
+          type guard is a conditional that checks if a variable is a certain type
+            if (typeof margin === 'string') {...}
+          type narrowing is when TypeScript can figure out what type a variable can be at a given point in our code
+        Inferred Union Return Types
+          If there are multiple possible return types in the function, TypeScript will infer the return type as a union.
+        Unions and Arrays
+          const timesList: (string | number)[] = [dateNumber, dateString];
+            the parentheses are vitally important to type arrays correctly. If we left out the parentheses and wrote string | number[], that type would allow strings or arrays of only numbers.
+        Common Key Value Pairs
+          any properties or methods that are not shared by all of the union’s members won’t be allowed and will produce a TypeScript error
+          afaik you can't find out which one of union types was used
+        Unions with Literal Types     
