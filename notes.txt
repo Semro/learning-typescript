@@ -36,7 +36,7 @@ Resources
             let names: string[][]
           Tuples - Arrays with fixed sequence of types
             let ourTuple: [string, number, string, boolean]
-            array of tuples: danceMoves:[string, number, boolean][]
+            array of tuples: danceMoves: [string, number, boolean][]
             they act like arrays
             but tuples aren't compatible with `array` type
             tuples are fixed length
@@ -124,4 +124,24 @@ Resources
         Common Key Value Pairs
           any properties or methods that are not shared by all of the union’s members won’t be allowed and will produce a TypeScript error
           afaik you can't find out which one of union types was used
-        Unions with Literal Types     
+        Unions with Literal Types
+          type Color = 'green' | 'yellow' | 'red';
+      Type Narrowing
+        Type guards
+        Using in with Type Guards
+          the in operator checks if a property exists on an object itself or anywhere within its prototype chai
+            if ('run' in pet) return pet.run();
+      Narrowing with else
+        function prepareEntree(entree: Pasta | Meat) {
+          if ('boil' in entree) {
+            return entree.boil();
+          }
+          else return entree.panFry();
+        }
+      Narrowing After a Type Guard
+        function prepareEntree(entree: Pasta | Meat) {
+          if ('boil' in entree) {
+            return entree.boil();
+          }
+          return entree.panFry();
+        }
