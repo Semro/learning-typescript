@@ -3,6 +3,7 @@ Resources
   https://basarat.gitbook.io/typescript/type-system
     i will learn primarly from this resource
   https://www.codecademy.com/learn/learn-typescript
+    Cheatsheet: https://www.codecademy.com/learn/paths/learn-typescript/tracks/learn-typescript/modules/learn-typescript-types/cheatsheet
     maybe that as well
       TS is a superset of JS with types
       Functions
@@ -64,7 +65,7 @@ Resources
             West
           }
           let north: Direction = Direction.North;
-          Enum values are assigned a numerical value according to their listed order. 
+          Enum values are assigned a numerical value according to their listed order.
             north === 0 (true)
         String Enums vs. Numeric Enums
           enum DirectionString { North = 'NORTH', South = 'SOUTH', East = 'EAST', West = 'WEST' }
@@ -82,7 +83,7 @@ Resources
             type MyString = string;
             let myVar: MyString = 'Hi'; // Valid code.
           TypeScript aliases are nothing more than names. They have absolutely no influence over how types work.
-            type MyString = string; 
+            type MyString = string;
             type MyOtherString = string;
             let firstString: MyString = 'test';
             let secondString: MyOtherString = firstString; // Valid code.
@@ -129,7 +130,7 @@ Resources
       Type Narrowing
         Type guards
         Using in with Type Guards
-          the in operator checks if a property exists on an object itself or anywhere within its prototype chai
+          the in operator checks if a property exists on an object itself or anywhere within its prototype chain
             if ('run' in pet) return pet.run();
       Narrowing with else
         function prepareEntree(entree: Pasta | Meat) {
@@ -144,4 +145,61 @@ Resources
             return entree.boil();
           }
           return entree.panFry();
+        }
+    Advanced Object Types
+      Interfaces and Types
+        interface can only be used to type objects, while type can be used to type objects, primitives, and more
+      Interfaces and Classes
+        class OneSeries implements Robot {...}
+        OneSeries should contain method/properties in Robot interface, and it's also can have additional methods/properties
+      Deep Types
+        interface Robot {
+          about: {
+            general: {
+              id: number;
+              name: string;
+            };
+          };
+          getRobotId: () => string;
+        }
+      Composed Types
+        interface About {
+          general: General;
+        }
+
+        interface General {
+          id: number;
+          name: string;
+          version: Version;
+        }
+
+        interface Version {
+          versionNumber: number;
+        }
+      Extending Interfaces
+        "extends" copies type members from one interface to another
+        example:
+          interface Shape {
+            color: string;
+          }
+
+          interface Square extends Shape {
+            sideLength: number;
+          }
+
+          const mySquare: Square = { sideLength: 10, color: 'blue' };
+      Index Signatures
+        interface SolarEclipse {
+          [latitude: string]: boolean;
+        }
+        corresponding object:
+          const solarEclipse: SolarEclipse = {
+            '40.712776': true;
+            '41.203323': true;
+            '40.417286': false;
+          }
+      Optional Type Members
+        interface Robot {
+          about?: About;
+          getRobotId: () => string;
         }
