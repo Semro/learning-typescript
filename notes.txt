@@ -146,13 +146,13 @@ Resources
           }
           return entree.panFry();
         }
-    Advanced Object Types
-      Interfaces and Types
+      Advanced Object Types
+        Interfaces and Types
         interface can only be used to type objects, while type can be used to type objects, primitives, and more
-      Interfaces and Classes
+        Interfaces and Classes
         class OneSeries implements Robot {...}
         OneSeries should contain method/properties in Robot interface, and it's also can have additional methods/properties
-      Deep Types
+        Deep Types
         interface Robot {
           about: {
             general: {
@@ -162,7 +162,7 @@ Resources
           };
           getRobotId: () => string;
         }
-      Composed Types
+        Composed Types
         interface About {
           general: General;
         }
@@ -176,7 +176,7 @@ Resources
         interface Version {
           versionNumber: number;
         }
-      Extending Interfaces
+        Extending Interfaces
         "extends" copies type members from one interface to another
         example:
           interface Shape {
@@ -188,7 +188,7 @@ Resources
           }
 
           const mySquare: Square = { sideLength: 10, color: 'blue' };
-      Index Signatures
+        Index Signatures
         interface SolarEclipse {
           [latitude: string]: boolean;
         }
@@ -198,7 +198,7 @@ Resources
             '41.203323': true;
             '40.417286': false;
           }
-      Optional Type Members
+        Optional Type Members
         interface Robot {
           about?: About;
           getRobotId: () => string;
