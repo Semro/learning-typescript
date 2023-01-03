@@ -148,58 +148,58 @@ Resources
         }
       Advanced Object Types
         Interfaces and Types
-        interface can only be used to type objects, while type can be used to type objects, primitives, and more
+          interface can only be used to type objects, while type can be used to type objects, primitives, and more
         Interfaces and Classes
-        class OneSeries implements Robot {...}
-        OneSeries should contain method/properties in Robot interface, and it's also can have additional methods/properties
+          class OneSeries implements Robot {...}
+          OneSeries should contain method/properties in Robot interface, and it's also can have additional methods/properties
         Deep Types
-        interface Robot {
-          about: {
-            general: {
-              id: number;
-              name: string;
+          interface Robot {
+            about: {
+              general: {
+                id: number;
+                name: string;
+              };
             };
-          };
-          getRobotId: () => string;
-        }
+            getRobotId: () => string;
+          }
         Composed Types
-        interface About {
-          general: General;
-        }
+          interface About {
+            general: General;
+          }
 
-        interface General {
-          id: number;
-          name: string;
-          version: Version;
-        }
+          interface General {
+            id: number;
+            name: string;
+            version: Version;
+          }
 
-        interface Version {
-          versionNumber: number;
-        }
+          interface Version {
+            versionNumber: number;
+          }
         Extending Interfaces
-        "extends" copies type members from one interface to another
-        example:
-          interface Shape {
-            color: string;
-          }
+          "extends" copies type members from one interface to another
+          example:
+            interface Shape {
+              color: string;
+            }
 
-          interface Square extends Shape {
-            sideLength: number;
-          }
+            interface Square extends Shape {
+              sideLength: number;
+            }
 
-          const mySquare: Square = { sideLength: 10, color: 'blue' };
+            const mySquare: Square = { sideLength: 10, color: 'blue' };
         Index Signatures
-        interface SolarEclipse {
-          [latitude: string]: boolean;
-        }
-        corresponding object:
-          const solarEclipse: SolarEclipse = {
-            '40.712776': true;
-            '41.203323': true;
-            '40.417286': false;
+          interface SolarEclipse {
+            [latitude: string]: boolean;
           }
+          corresponding object:
+            const solarEclipse: SolarEclipse = {
+              '40.712776': true;
+              '41.203323': true;
+              '40.417286': false;
+            }
         Optional Type Members
-        interface Robot {
-          about?: About;
-          getRobotId: () => string;
-        }
+          interface Robot {
+            about?: About;
+            getRobotId: () => string;
+          }
